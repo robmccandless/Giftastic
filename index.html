@@ -4,6 +4,10 @@
 <head>
     <meta charset="utf-8">
     <title>Favorite Animals</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="./assets/css/style.css">
+
     <style type="text/css">
         button,
         div,
@@ -15,6 +19,7 @@
 </head>
 
 <body>
+    <h1>My Favorite Animals</h1>
     <button data-animal="dog">dog</button>
     <button data-animal="cat">cat</button>
     <button data-animal="skunk">skunk</button>
@@ -34,24 +39,24 @@
         document.getElementById('getPosts').addEventListener('click', getPosts);
     </script>
     <div class="container">
-        <h1>My Favorite Animals</h1>
+
         <!-- Rendered buttons will get dumped here  -->
         <div id="buttons-view"></div>
         <form id="movie-form">
-            <label for="movie-input">Add a Movie, Yo!</label>
-            <input type="text" id="movie-input"><br>
-            <!-- Button triggers new movie to be added -->
-            <input id="add-movie" type="submit" value="Add a Movie, Yo!">
+            <label for="animal-input">Add a Animal!</label>
+            <input type="text" id="animal-input"><br>
+            <!-- Button triggers new animal to be added -->
+            <input id="add-animal" type="submit" value="Add a Animal!">
         </form>
         <!-- Favorite animals will get dumped Here -->
         <div id="movies-view"></div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script type="text/javascript">
-            // Initial array of movies
-            var movies = ["The Matrix", "The Notebook", "Mr. Nobody", "The Lion King"];
+            // Initial array of animals
+            var = ["dog", "cat", "skunk", "rabbit", "monkey", "bear", "deer", "bird", "snake", "camel"];
             // displayMovieInfo function re-renders the HTML to display the appropriate content
             function displayMovieInfo() {
-                var movie = $(this).attr("data-name");
+                var animal = $(this).attr("data-name");
                 var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy";
                 // Creates AJAX call for the specific movie button being clicked
                 $.ajax({
@@ -123,6 +128,12 @@
             renderButtons();
         </script>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <script src="./assets/javascript/app.js"></script>
 </body>
 
 </html>
