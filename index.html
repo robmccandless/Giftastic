@@ -1,9 +1,9 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>Favorite Animals</title>
+    <title>Favorite Movies</title>
     <style type="text/css">
         button,
         div,
@@ -15,8 +15,17 @@
 </head>
 
 <body>
+    <button id="getText">Get Text</button>
+    <button id="getUsers">Get JSON</button>
+    <button id="getPosts">Get API DATA</button>
+    <div id="output"></div>
+    <script>
+        document.getElementById('getText').addEventListener('click', getText);
+        document.getElementById('getUsers').addEventListener('click', getUsers);
+        document.getElementById('getPosts').addEventListener('click', getPosts);
+    </script>
     <div class="container">
-        <h1>Movie Search</h1>
+        <h1>My Favorite Animals</h1>
         <!-- Rendered buttons will get dumped here  -->
         <div id="buttons-view"></div>
         <form id="movie-form">
@@ -25,7 +34,7 @@
             <!-- Button triggers new movie to be added -->
             <input id="add-movie" type="submit" value="Add a Movie, Yo!">
         </form>
-        <!-- Movies will get dumped Here -->
+        <!-- Favorite animals will get dumped Here -->
         <div id="movies-view"></div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script type="text/javascript">
