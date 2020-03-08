@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Favorite Movies</title>
+    <title>Favorite Animals</title>
     <style type="text/css">
         button,
         div,
@@ -15,10 +15,19 @@
 </head>
 
 <body>
-    <button id="getText">Get Text</button>
-    <button id="getUsers">Get JSON</button>
-    <button id="getPosts">Get API DATA</button>
-    <div id="output"></div>
+    <button data-animal="dog">dog</button>
+    <button data-animal="cat">cat</button>
+    <button data-animal="skunk">skunk</button>
+    <button data-animal="rabbit">rabbit</button>
+    <button data-animal="monkey">monkey</button>
+    <button data-animal="bear">bear</button>
+    <button data-animal="deer">deer</button>
+    <button data-animal="bird">bird</button>
+    <button data-animal="snake">snake</button>
+    <button data-animal="camel">camel</button>
+
+
+
     <script>
         document.getElementById('getText').addEventListener('click', getText);
         document.getElementById('getUsers').addEventListener('click', getUsers);
