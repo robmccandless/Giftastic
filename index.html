@@ -54,56 +54,62 @@
         <script type="text/javascript">
             // Initial array of animals
             var = ["dog", "cat", "skunk", "rabbit", "monkey", "bear", "deer", "bird", "snake", "camel"];
-            // displayMovieInfo function re-renders the HTML to display the appropriate content
-            function displayMovieInfo() {
+            // displayAnimalInfo function re-renders the HTML to display the appropriate content
+            function displayAnimlInfo() {
                 var animal = $(this).attr("data-name");
-                var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy";
-                // Creates AJAX call for the specific movie button being clicked
+                var queryURL = "http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=AkcId49tl4eCGTpCo20nE4R9RvbT2g4u&limit=5" + animal + "&apikey=trilogy";
+                //javascript, jQuery
+                var xhr = $.get("http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=AkcId49tl4eCGTpCo20nE4R9RvbT2g4u&limit=5");
+                xhr.done(function(data) {
+                    console.log("success got data", data);
+                });
+
+                // Creates AJAX call for the specific animal button being clicked
                 $.ajax({
                     url: queryURL,
                     method: "GET"
                 }).then(function(response) {
                     console.log(response);
-                    // Creates a div to hold the movie
-                    var movieDiv = $("<div>");
+                    // Creates a div to hold the animal pic
+                    var animalDiv = $("<div>");
                     // Retrieves the Rating Data
                     var rating = response.Rated;
                     // Creates an element to have the rating displayed
                     var ratingDiv = $("<div>").text(rating);
                     // Displays the rating
-                    movieDiv.append(ratingDiv);
+                    animalDiv.append(ratingDiv);
                     // Retrieves the release year
                     var releaseYear = response.Year;
                     // Creates an element to hold the release year
                     var releaseDiv = $("<div>").text(releaseYear);
                     // Displays the release year
-                    movieDiv.append(releaseDiv);
+                    animalDiv.append(releaseDiv);
                     // Retrieves the plot
                     var plot = response.Plot;
                     // Creates an element to hold the plot
                     var plotDiv = $("<div>").text(plot);
                     // Appends the plot
-                    movieDiv.append(plotDiv);
+                    animalDiv.append(plotDiv);
                     // Creates an element to hold the image
                     var imageA = $("<img>").attr("src", response.Poster);
                     // Appends the image
-                    movieDiv.append(imageA);
-                    // Puts the entire Movie above the previous movies.
-                    $("#movies-view").prepend(movieDiv)
+                    animalDiv.append(imageA);
+                    // Puts the new animal above the previous animal.
+                    $("#animal-view").prepend(animalDiv)
                 });
             }
-            // Function for displaying movie data
+            // Function for displaying animal data
             function renderButtons() {
-                // Deletes the movies prior to adding new movies
+                // Deletes the animal prior to adding new animal
                 // (this is necessary otherwise you will have repeat buttons)
                 $("#buttons-view").empty();
-                // Loops through the array of movies
+                // Loops through the array of animals
                 for (var i = 0; i < movies.length; i++) {
-                    // Then dynamicaly generates buttons for each movie in the array
+                    // Then dynamicaly generates buttons for each animal in the array
                     // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
                     var a = $("<button>");
-                    // Adds a class of movie to our button
-                    a.addClass("movie");
+                    // Adds a class of animal to our button
+                    a.addClass("animal");
                     // Added a data-attribute
                     a.attr("data-name", movies[i]);
                     // Provided the initial button text
@@ -112,18 +118,18 @@
                     $("#buttons-view").append(a);
                 }
             }
-            // This function handles events where the add movie button is clicked
-            $("#add-movie").on("click", function(event) {
+            // This function handles events where the add animal button is clicked
+            $("#add-animal").on("click", function(event) {
                 event.preventDefault();
                 // This line of code will grab the input from the textbox
-                var movie = $("#movie-input").val().trim();
-                // The movie from the textbox is then added to our array
-                movies.push(movie);
-                // Calling renderButtons which handles the processing of our movie array
+                var animal = $("#animal-input").val().trim();
+                // The animal from the textbox is then added to our array
+                animal.push(animal);
+                // Calling renderButtons which handles the processing of our animal array
                 renderButtons();
             });
-            // Adding click event listeners to all elements with a class of "movie"
-            $(document).on("click", ".movie", displayMovieInfo);
+            // Adding click event listeners to all elements with a class of "animal"
+            $(document).on("click", ".animal", displayAnimalInfo);
             // Calling the renderButtons function to display the intial buttons
             renderButtons();
         </script>
