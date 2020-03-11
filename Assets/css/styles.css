@@ -2,15 +2,20 @@ body {
     background-color: lightblue;
 }
 
+button,
+div,
+form,
+input {
+    margin: 10px;
+}
+
+img {
+    width: 200px;
+    height: 300px;
+}
+
 h1 {
     color: red;
-}
-
-.container {
-    background-color: grey;
-}
-
-h1 {
     color: lightblue;
     text-align: center;
 }

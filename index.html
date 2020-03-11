@@ -6,140 +6,35 @@
     <title>Favorite Animals</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./Assets/css/styles.css">
 
-    <style type="text/css">
-        button,
-        div,
-        form,
-        input {
-            margin: 10px;
-        }
-    </style>
+
 </head>
 
 <body>
     <h1>My Favorite Animals</h1>
-    <button data-animal="dog">dog</button>
-    <button data-animal="cat">cat</button>
-    <button data-animal="skunk">skunk</button>
-    <button data-animal="rabbit">rabbit</button>
-    <button data-animal="monkey">monkey</button>
-    <button data-animal="bear">bear</button>
-    <button data-animal="deer">deer</button>
-    <button data-animal="bird">bird</button>
-    <button data-animal="snake">snake</button>
-    <button data-animal="camel">camel</button>
 
 
-
-    <script>
-        document.getElementById('getText').addEventListener('click', getText);
-        document.getElementById('getUsers').addEventListener('click', getUsers);
-        document.getElementById('getPosts').addEventListener('click', getPosts);
-    </script>
     <div class="container">
 
         <!-- Rendered buttons will get dumped here  -->
         <div id="buttons-view"></div>
-        <form id="movie-form">
+        <form id="animal-form">
             <label for="animal-input">Add a Animal!</label>
             <input type="text" id="animal-input"><br>
             <!-- Button triggers new animal to be added -->
             <input id="add-animal" type="submit" value="Add a Animal!">
         </form>
         <!-- Favorite animals will get dumped Here -->
-        <div id="movies-view"></div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script type="text/javascript">
-            // Initial array of animals
-            var = ["dog", "cat", "skunk", "rabbit", "monkey", "bear", "deer", "bird", "snake", "camel"];
-            // displayAnimalInfo function re-renders the HTML to display the appropriate content
-            function displayAnimlInfo() {
-                var animal = $(this).attr("data-name");
-                var queryURL = "http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=AkcId49tl4eCGTpCo20nE4R9RvbT2g4u&limit=5" + animal + "&apikey=trilogy";
-                //javascript, jQuery
-                var xhr = $.get("http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=AkcId49tl4eCGTpCo20nE4R9RvbT2g4u&limit=5");
-                xhr.done(function(data) {
-                    console.log("success got data", data);
-                });
+        <div class="row" id="animal-view"></div>
 
-                // Creates AJAX call for the specific animal button being clicked
-                $.ajax({
-                    url: queryURL,
-                    method: "GET"
-                }).then(function(response) {
-                    console.log(response);
-                    // Creates a div to hold the animal pic
-                    var animalDiv = $("<div>");
-                    // Retrieves the Rating Data
-                    var rating = response.Rated;
-                    // Creates an element to have the rating displayed
-                    var ratingDiv = $("<div>").text(rating);
-                    // Displays the rating
-                    animalDiv.append(ratingDiv);
-                    // Retrieves the release year
-                    var releaseYear = response.Year;
-                    // Creates an element to hold the release year
-                    var releaseDiv = $("<div>").text(releaseYear);
-                    // Displays the release year
-                    animalDiv.append(releaseDiv);
-                    // Retrieves the plot
-                    var plot = response.Plot;
-                    // Creates an element to hold the plot
-                    var plotDiv = $("<div>").text(plot);
-                    // Appends the plot
-                    animalDiv.append(plotDiv);
-                    // Creates an element to hold the image
-                    var imageA = $("<img>").attr("src", response.Poster);
-                    // Appends the image
-                    animalDiv.append(imageA);
-                    // Puts the new animal above the previous animal.
-                    $("#animal-view").prepend(animalDiv)
-                });
-            }
-            // Function for displaying animal data
-            function renderButtons() {
-                // Deletes the animal prior to adding new animal
-                // (this is necessary otherwise you will have repeat buttons)
-                $("#buttons-view").empty();
-                // Loops through the array of animals
-                for (var i = 0; i < movies.length; i++) {
-                    // Then dynamicaly generates buttons for each animal in the array
-                    // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
-                    var a = $("<button>");
-                    // Adds a class of animal to our button
-                    a.addClass("animal");
-                    // Added a data-attribute
-                    a.attr("data-name", movies[i]);
-                    // Provided the initial button text
-                    a.text(movies[i]);
-                    // Added the button to the buttons-view div
-                    $("#buttons-view").append(a);
-                }
-            }
-            // This function handles events where the add animal button is clicked
-            $("#add-animal").on("click", function(event) {
-                event.preventDefault();
-                // This line of code will grab the input from the textbox
-                var animal = $("#animal-input").val().trim();
-                // The animal from the textbox is then added to our array
-                animal.push(animal);
-                // Calling renderButtons which handles the processing of our animal array
-                renderButtons();
-            });
-            // Adding click event listeners to all elements with a class of "animal"
-            $(document).on("click", ".animal", displayAnimalInfo);
-            // Calling the renderButtons function to display the intial buttons
-            renderButtons();
-        </script>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-    <script src="./assets/javascript/app.js"></script>
+    <script src="./Assets/javascript/apps.js"></script>
 </body>
 
 </html>
