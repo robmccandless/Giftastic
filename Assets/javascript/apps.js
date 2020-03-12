@@ -16,7 +16,7 @@ var animalsArray = ["dog", "cat", "skunk", "rabbit", "monkey", "bear", "deer", "
 function displayAnimalInfo() {
     console.log(this)
     var animal = $(this).attr("data-name");
-    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + animal + "&api_key=AkcId49tl4eCGTpCo20nE4R9RvbT2g4u&limit=10" + animal + "&apikey=trilogy";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + animal + "&api_key=AkcId49tl4eCGTpCo20nE4R9RvbT2g4u&limit=10" + animal + "&apikey=trilogy";
     //javascript, jQuery
     //   var xhr = $.get("http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=AkcId49tl4eCGTpCo20nE4R9RvbT2g4u&limit=5");
     //   xhr.done(function(data) {
